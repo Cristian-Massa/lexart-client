@@ -32,6 +32,7 @@ export default function Detailed() {
             </div>
             <div className="p-6">
               {isLoading ? (
+                <div className="flex justify-center items-center">
                 <svg
                   className="animate-spin "
                   width="64px"
@@ -60,6 +61,7 @@ export default function Detailed() {
                     />{" "}
                   </g>
                 </svg>
+                </div>
               ) : "id" in returnedData ? (
                 <ModifyForm
                   id={Number(id)}
