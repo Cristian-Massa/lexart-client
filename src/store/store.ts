@@ -1,24 +1,26 @@
 import { create } from 'zustand'
-type Store = {
-  pagination: number
-  inc: () => void
-  dec: () => void
-}
-
+import { Store, ConsoleStore, ModalStore, ProductStore } from '../types/store/store.type';
+import { ProductResponse } from '../interfaces/product/product.interface';
 export const useStore = create<Store>()((set) => ({
   pagination: 0,
   inc: () => set((state) => ({ pagination: state.pagination + 5 })),
   dec: () => set((state) => ({ pagination: state.pagination - 5 })),
 }))
 
-type ConsoleStore = {
-  log: string[];
-  add: (string: string) => void;
-  clear: () => void;
-}
 
 export const consoleStore = create<ConsoleStore>((set) => ({
   log: [],
   add: (string) => set((state) => ({ log: [...state.log, string] })),
   clear: () => set({ log: [] }),
+}));
+
+
+export const modalStore = create<ModalStore>((set) => ({
+  modal: false,
+  switchModal: () => set((state) => ({ modal: !state.modal }))
+}));
+
+export const productStore = create<ProductStore>((set) => ({
+  productResponse: null, // Initialize as null or an empty ProductResponse object
+  setProductResponse: (data: ProductResponse) => set(() => ({ productResponse: data })),
 }));

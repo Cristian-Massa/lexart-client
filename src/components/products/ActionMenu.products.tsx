@@ -1,37 +1,74 @@
+import { useStore } from "../../store/store";
+import { useFetch } from "../../hooks/common/useFetch";
+import { FetchData } from "../../interfaces/common/fetch.interface";
+import { modalStore } from "../../store/store";
 import ActionButton from "../common/buttons/ActionButton";
-import { useFetch } from "../../hooks/useFetch";
-export default function ActionMenu(){
-    const {isLoading, petition, } = useFetch()
-
-    return(
-        <div className="flex gap-4">
-        <ActionButton
-          label="Borrar todo"
-          color="bg-red-300"
-          onClick={() => {petition({
-            url: 'https://lexart-test-back.vercel.app/v1/products/delete/all',
-            method: 'delete'
-          })}}
-          disablied={isLoading}
-        />
+import Accept from "../common/modal/Accept.modal";
+import { useState } from "react";
+export default function ActionMenu() {
+  const {petition, isLoading} = useFetch()
+  const {pagination} = useStore()
+  const {modal, switchModal} = modalStore()
+  const [message, setMessage] = useState('')
+  const [petitionConfig, setPetitionConfig] = useState<FetchData>({
+    url: '',
+    body: '',
+    method: ''
+  })
+  return (
+    <div className="flex gap-4">
+      <Accept 
+        message={message}
+        active={modal}
+        isLoading={isLoading}
+        petitionConfig={petitionConfig}
+        onClick={()=>{
+          petition(petitionConfig)
+        }}
+      />
       <ActionButton
-          label="Crear 50 productos"
-          color="bg-yellow-300"
-          onClick={() => {petition({
-            url: 'https://lexart-test-back.vercel.app/v1/products/create/seed',
+        label="Borrar todo"
+        color="bg-red-300"
+        
+        onClick={()=>{
+          setPetitionConfig({
+            url: `https://lexart-test-back.vercel.app/v1/products/delete/all?limit=5&offset=${pagination}`,
+            method: 'delete'
+          })
+          switchModal(); 
+          setMessage('Seguro que quieres borrar todo?')
+        }}
+      />
+      <ActionButton
+        label="Crear 50 productos"
+        color="bg-yellow-300"
+        onClick={()=>{
+          setPetitionConfig({
+            url: `https://lexart-test-back.vercel.app/v1/products/create/seed?limit=5&offset=${pagination}`,
             method: 'post'
-          })}}
-          disablied={isLoading}
-        />
-        <ActionButton
-          label="Crear"
-          color="bg-green-300"
-          onClick={() => {petition({
-            url: 'https://lexart-test-back.vercel.app/v1/products/create/one',
-            method: 'post'
-          })}}
-          disablied={isLoading}
-        />
-      </div>
-    )
+          })
+          switchModal(); 
+          setMessage('Seguro que quieres crear 50 productos?')
+        }}
+      />
+      <ActionButton
+        label="Crear"
+        color="bg-green-300"
+        onClick={()=>{
+          setPetitionConfig({
+            url: `https://lexart-test-back.vercel.app/v1/products/delete/all?limit=5&offset=${pagination}`,
+            method: 'delete'
+          })
+          switchModal(); 
+          setMessage('Seguro que quieres borrar todo?')
+        }}
+      />
+    </div>
+  );
 }
+
+
+// petition({
+//   url: "https://lexart-test-back.vercel.app/v1/products/delete/all",
+//   method: "delete",
+// });

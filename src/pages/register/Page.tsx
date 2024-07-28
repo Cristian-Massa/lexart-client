@@ -3,7 +3,7 @@ import Button from "../../components/common/buttons/Button";
 import Input from "../../components/common/inputs/Input";
 import { useState } from "react";
 import { UserInfo } from "../../interfaces/user/user.interface";
-import { useFetch } from "../../hooks/useFetch";
+import { useFetch } from "../../hooks/common/useFetch";
 import Aside from "../../components/common/aside/Aside";
 
 export default function Register() {

@@ -1,11 +1,12 @@
 import { useEffect } from "react";
-import { useFetch } from "../../hooks/useFetch";
-import { useStore } from "../../store/store";
+import { useFetch } from "../../hooks/common/useFetch";
+import { productStore, useStore } from "../../store/store";
 import { ReturnedData } from "../../types/common/common.type";
 import Button from "../common/buttons/Button";
 import ActionButton from "../common/buttons/ActionButton";
 export default function Table() {
   const { returnedData, petition } = useFetch();
+  const { productResponse} = productStore()
   const { pagination, inc, dec } = useStore();
   useEffect(() => {
     petition({
@@ -39,10 +40,10 @@ export default function Table() {
           </tr>
         </thead>
         <tbody className="[&_tr:last-child]:border-0">
-          {returnedData &&
-          "products" in returnedData &&
-          Array.isArray(returnedData.products)
-            ? returnedData.products.map(
+          {
+
+          Array.isArray(productResponse)
+            ? productResponse.map(
                 (element: ReturnedData, key: number) => {
                   return (
                     <tr
