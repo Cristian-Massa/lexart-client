@@ -36,6 +36,7 @@ export default function Home() {
             label="Productos"
             onClick={() => {navigate('/products')}}
             color="bg-gray-700"
+            
           />
         </div>
       </div>
