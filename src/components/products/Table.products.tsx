@@ -20,7 +20,7 @@ export default function Table() {
       <table className="w-full caption-bottom text-sm">
         <thead className="[&_tr]:border-b">
           <tr className="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
-          <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0">
+            <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0">
               Id
             </th>
             <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0">
@@ -52,7 +52,7 @@ export default function Table() {
                       key={key++}
                       className="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted"
                     >
-                                            <td className="p-4 align-middle [&:has([role=checkbox])]:pr-0 font-medium">
+                      <td className="p-4 align-middle [&:has([role=checkbox])]:pr-0 font-medium">
                         {"id" in element ? element.id : null}
                       </td>
                       <td className="p-4 align-middle [&:has([role=checkbox])]:pr-0 font-medium">
@@ -72,27 +72,24 @@ export default function Table() {
                       </td>
                       <td className="p-4 flex gap-4 align-middle [&:has([role=checkbox])]:pr-0">
                         <ActionButton
-
                           label="borrar"
                           color="bg-red-600"
                           onClick={() => {
-                            "id" in element ? 
-                            petition({
-                              url: `https://lexart-test-back.vercel.app/v1/products/delete/one?limit=5&offset=${pagination}&id=${element.id}`,
-                              method: "delete"
-                            })
-                            :
-                            null
+                            "id" in element
+                              ? petition({
+                                  url: `https://lexart-test-back.vercel.app/v1/products/delete/one?limit=5&offset=${pagination}&id=${element.id}`,
+                                  method: "delete",
+                                })
+                              : null;
                           }}
                         />
                         <ActionButton
                           label="editar"
                           color="bg-yellow-600"
                           onClick={() => {
-                            "id" in element ?
-                            redirect(`/products/${element.id}`)
-                            :
-                            null
+                            "id" in element
+                              ? redirect(`/products/${element.id}`)
+                              : null;
                           }}
                         />
                       </td>

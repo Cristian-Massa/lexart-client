@@ -1,4 +1,5 @@
 export interface ProductInfo{
+    id?: number,
     name: string,
     stock: number,
     price: number,
