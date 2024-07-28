@@ -1,5 +1,3 @@
-import { AxiosStatic } from "axios";
-
 export interface FetchData{
     url: string,
     body?: any,

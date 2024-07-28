@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { FetchData } from "../interfaces/common/fetch.interface";
-import axios from "axios";
 import { ReturnedData } from "../types/common/common.type";
 
 export function useFetch() {
