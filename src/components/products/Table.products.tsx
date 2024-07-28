@@ -9,7 +9,7 @@ export default function Table() {
   const { pagination, inc, dec } = useStore();
   useEffect(() => {
     petition({
-      url: `https://lexart-test-back.vercel.app/v1/products/get/all?limit=10&offset=${pagination}`,
+      url: `https://lexart-test-back.vercel.app/v1/products/get/all?limit=6&offset=${pagination}`,
       method: "get",
     });
   }, [pagination]);
