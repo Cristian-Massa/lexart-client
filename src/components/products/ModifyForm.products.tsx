@@ -139,7 +139,7 @@ export default function ModifyForm({
             petition({
               url: `https://lexart-test-back.vercel.app/v1/products/modify/one?id=${id}`,
               body: data,
-              method: 'post',
+              method: 'patch',
             });
           }}
         />
