@@ -100,9 +100,9 @@ export default function Table() {
           label=">"
           onClick={() => {
             if('products' in returnedData){
-              console.log(returnedData.offset, returnedData.total, returnedData.total / 6);
+              console.log(returnedData.offset, returnedData.total, returnedData.total / 5);
               
-              returnedData.offset >= returnedData.total / 5 ? 
+              returnedData.offset > returnedData.total / 5 ? 
               null:
               inc()
               
