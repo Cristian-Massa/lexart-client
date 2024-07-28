@@ -1,5 +1,6 @@
 import Aside from "../../components/common/aside/Aside";
 import Header from "../../components/common/header/Header";
+import ActionMenu from "../../components/products/ActionMenu.products";
 import Table from "../../components/products/Table.products";
 
 export default function Products() {
@@ -14,13 +15,16 @@ export default function Products() {
             x-chunk="dashboard-06-chunk-0"
             data-v0-t="card"
           >
-            <div className="flex flex-col space-y-1.5 p-6">
-              <h3 className="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight">
-                Products
-              </h3>
-              <p className="text-sm text-muted-foreground">
-                Manage your products and view their sales performance.
-              </p>
+            <div className="flex flex-row w-full justify-between space-y-1.5 p-6">
+              <div>
+                <h3 className="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight">
+                  Productos
+                </h3>
+                <p className="text-sm text-muted-foreground">
+                  Gestiona el stock de tus productos y modificarlos.
+                </p>
+              </div>
+              <ActionMenu />
             </div>
             <div className="p-6">
               <div className="relative w-full overflow-auto">

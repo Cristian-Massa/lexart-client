@@ -3,8 +3,9 @@ import { useFetch } from "../../hooks/useFetch";
 import { useStore } from "../../store/store";
 import { ReturnedData } from "../../types/common/common.type";
 import Button from "../common/buttons/Button";
+import ActionButton from "../common/buttons/ActionButton";
 export default function Table() {
-  const {returnedData, petition} = useFetch();
+  const { returnedData, petition } = useFetch();
   const { pagination, inc, dec } = useStore();
   useEffect(() => {
     petition({
@@ -31,6 +32,9 @@ export default function Table() {
             </th>
             <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0">
               Precio
+            </th>
+            <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0">
+              Accion
             </th>
           </tr>
         </thead>
@@ -60,6 +64,18 @@ export default function Table() {
                       <td className="p-4 align-middle [&:has([role=checkbox])]:pr-0">
                         ${"price" in element ? element.price : null}
                       </td>
+                      <td className="p-4 align-middle [&:has([role=checkbox])]:pr-0">
+                        <ActionButton
+                          label="borrar"
+                          color="bg-red-900"
+                          onClick={() => {}}
+                        />
+                        <ActionButton
+                          label="editar"
+                          color="bg-yellow-900"
+                          onClick={() => {}}
+                        />
+                      </td>
                     </tr>
                   );
                 }
@@ -68,13 +84,19 @@ export default function Table() {
         </tbody>
       </table>
       <div className="flex place-self-center">
-        <Button 
+        <Button
           label="<"
-          onClick={()=>{ pagination > 0 ? dec(): null}} />
-        <Button 
+          onClick={() => {
+            pagination > 0 ? dec() : null;
+          }}
+        />
+        <Button
           label=">"
-          onClick={()=>{inc()}} />
-        </div>
+          onClick={() => {
+            inc();
+          }}
+        />
+      </div>
     </>
   );
 }

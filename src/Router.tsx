@@ -5,6 +5,7 @@ import Login from "./pages/login/Page";
 import Register from "./pages/register/Page";
 import Products from "./pages/products/Page";
 import Detailed from "./pages/products/detailed/Page";
+import Console from "./pages/console/Page";
 const Router = createBrowserRouter([
   {
     path: "/",
@@ -29,6 +30,11 @@ const Router = createBrowserRouter([
   {
     path: "/register",
     element: <Register />,
+    errorElement: <Error />,
+  },
+  {
+    path: "/console",
+    element: <Console />,
     errorElement: <Error />,
   },
 ]);
