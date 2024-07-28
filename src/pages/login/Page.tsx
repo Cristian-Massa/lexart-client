@@ -12,7 +12,6 @@ export default function Login(){
     password: ''
   })
   const {isLoading, petition} = useFetch()
-  console.log(document.cookie);
   
     return(
         <div className="flex min-h-screen items-center justify-center bg-muted px-4 py-12 sm:px-6 lg:px-8">
