@@ -15,6 +15,7 @@ export default function ModifyForm({
   const navigate = useNavigate()
   const {petition} = useFetch()
   const [data, setData] = useState<ProductInfo>({
+    id:id,
     name: name,
     stock: stock,
     price: price,
