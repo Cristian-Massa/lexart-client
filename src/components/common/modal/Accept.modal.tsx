@@ -1,5 +1,6 @@
 import { ModalInterface } from "../../../interfaces/common/modal.interface";
 import { modalStore } from "../../../store/store";
+import CreateForm from "../../products/CreateForm.products";
 import ActionButton from "../buttons/ActionButton";
 export default function Accept({
   message,
@@ -7,6 +8,7 @@ export default function Accept({
   onClick,
   petitionConfig,
   isLoading,
+  createForm
 }: ModalInterface) {
   const { switchModal } = modalStore();
   return (
@@ -23,7 +25,15 @@ export default function Accept({
         <div>
           <p>{message}</p>
         </div>
-        <div className="relative z-50 grid">
+        {
+          createForm ?
+          <CreateForm 
+            isLoading={isLoading}
+            onClick={onClick}
+            petitionConfig={petitionConfig}
+          />
+          :
+          <div className="relative z-50 grid">
           <div className="flex gap-4">
             <ActionButton
               label="Aceptar"
@@ -104,6 +114,7 @@ export default function Accept({
             )}
           </div>
         </div>
+        }
       </div>
     </div>
   );

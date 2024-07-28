@@ -15,11 +15,14 @@ export default function ActionMenu() {
     body: '',
     method: ''
   })
+  const [isForm, setisForm] = useState(false)
   return (
     <div className="flex gap-4">
       <Accept 
         message={message}
         active={modal}
+        
+        createForm={isForm}
         isLoading={isLoading}
         petitionConfig={petitionConfig}
         onClick={()=>{
@@ -31,6 +34,7 @@ export default function ActionMenu() {
         color="bg-red-300"
         
         onClick={()=>{
+          setisForm(false)
           setPetitionConfig({
             url: `https://lexart-test-back.vercel.app/v1/products/delete/all?limit=5&offset=${pagination}`,
             method: 'delete'
@@ -44,6 +48,7 @@ export default function ActionMenu() {
         label="Crear 50 productos"
         color="bg-yellow-300"
         onClick={()=>{
+          setisForm(false)
           setPetitionConfig({
             url: `https://lexart-test-back.vercel.app/v1/products/create/seed?limit=5&offset=${pagination}`,
             method: 'post'
@@ -56,12 +61,13 @@ export default function ActionMenu() {
         label="Crear"
         color="bg-green-300"
         onClick={()=>{
+          setisForm(true)
           setPetitionConfig({
-            url: `https://lexart-test-back.vercel.app/v1/products/delete/all?limit=5&offset=${pagination}`,
+            url: `https://lexart-test-back.vercel.app/v1/products/create/one?limit=5&offset=${pagination}`,
             method: 'post'
           })
           switchModal(); 
-          setMessage('Seguro que quieres borrar todo?')
+          setMessage('Ingresa los datos del producto para ingresarlo')
         }}
       />
     </div>
