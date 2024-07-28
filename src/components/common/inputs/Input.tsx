@@ -6,6 +6,7 @@ export default function Input({ placeHolder, onChange, id, name, required, type 
       id={id}
       required={required ? true : false}
       name={name}
+      type={type}
       className="block w-full appearance-none rounded-md border border-input bg-background px-3 py-2 text-primary-foreground shadow-sm placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary sm:text-sm"
       onChange={onChange}
       placeholder={placeHolder}
