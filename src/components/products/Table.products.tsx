@@ -42,7 +42,7 @@ export default function Table() {
         <tbody className="[&_tr:last-child]:border-0">
           {
 
-          Array.isArray(productResponse)
+          Array.isArray(productResponse?.products)
             ? productResponse.products.map(
                 (element: ReturnedData, key: number) => {
                   return (
