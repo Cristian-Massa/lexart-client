@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { redirect } from "react-router-dom";
 import { useFetch } from "../../hooks/common/useFetch";
 import { productStore, useStore } from "../../store/store";
 import Button from "../common/buttons/Button";
@@ -67,12 +68,21 @@ export default function Table() {
                         <ActionButton
                           label="borrar"
                           color="bg-red-600"
-                          onClick={() => {}}
+                          onClick={(e) => {
+                            const id = e.currentTarget.id
+                            petition({
+                              url: `https://lexart-test-back.vercel.app/v1/products/delete/one?limit=5&offset=${pagination}&id=${id}`,
+                              method: "delete"
+                            })
+                          }}
                         />
                         <ActionButton
                           label="editar"
                           color="bg-yellow-600"
-                          onClick={() => {}}
+                          onClick={(e) => {
+                            const id = e.currentTarget.id
+                            redirect(`/products/${id}`)
+                          }}
                         />
                       </td>
                     </tr>
