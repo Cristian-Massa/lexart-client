@@ -103,8 +103,8 @@ export default function Table() {
               console.log(returnedData.offset, returnedData.total, returnedData.total / 5);
               
               returnedData.offset <= returnedData.total - 5 ? 
-              null:
-              inc()
+              inc():
+              null
               
             }
           }}
