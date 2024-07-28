@@ -1,14 +1,13 @@
-import { useState } from "react";
-import { ModalInterface } from "../../interfaces/common/modal.interface";
+import { useEffect, useState } from "react";
 import { modalStore } from "../../store/store";
 import ActionButton from "../common/buttons/ActionButton";
 import Input from "../common/inputs/Input";
+import { useFetch } from "../../hooks/common/useFetch";
+import { useStore } from "../../store/store";
 
-export default function CreateForm({
-  onClick,
-  petitionConfig,
-  isLoading,
-}: ModalInterface) {
+export default function CreateForm() {
+    const {pagination} = useStore()
+    const {petition, isLoading} = useFetch()
   const [body, setBody] = useState({
     name: "",
     mark: "",
@@ -16,7 +15,10 @@ export default function CreateForm({
     model: "",
     price: 0
   });
-
+  useEffect(()=>{
+    console.log(body);
+    
+  }, [body])
   const { switchModal } = modalStore();
   return (
     <div
@@ -147,13 +149,17 @@ export default function CreateForm({
                 color="bg-green-600"
                 disablied={isLoading}
                 onClick={() => {
-                  if (petitionConfig && onClick) {
-                    onClick({
-                      url: petitionConfig.url,
-                      body: body,
-                      method: petitionConfig.method,
+                    petition({
+                      url: `https://lexart-test-back.vercel.app/v1/products/delete/all?limit=5&offset=${pagination}`,
+                      body: {
+                        name: body.name,
+                        mark: body.mark,
+                        stock: body.stock,
+                        model: body.model,
+                        price: body.price
+                      },
+                      method: 'post',
                     });
-                  }
                 }}
               />
               <ActionButton
@@ -171,15 +177,7 @@ export default function CreateForm({
             label="Aceptar"
             color="bg-gray-600"
             disablied={true}
-            onClick={() => {
-              if (petitionConfig && onClick) {
-                onClick({
-                  url: petitionConfig.url,
-                  body: body,
-                  method: petitionConfig.method,
-                });
-              }
-            }}
+            onClick={() => {}}
           />
           <ActionButton
             label="Denegar"

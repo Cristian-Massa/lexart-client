@@ -5,10 +5,10 @@ import ActionButton from "../buttons/ActionButton";
 export default function Accept({
   message,
   active,
-  onClick,
-  petitionConfig,
   isLoading,
-  createForm
+  petitionConfig,
+  createForm,
+  onClick
 }: ModalInterface) {
   const { switchModal } = modalStore();
   return (
@@ -28,9 +28,7 @@ export default function Accept({
         {
           createForm ?
           <CreateForm 
-            isLoading={isLoading}
-            onClick={onClick}
-            petitionConfig={petitionConfig}
+            // isLoading={isLoading}
           />
           :
           <div className="relative z-50 grid">
@@ -38,7 +36,7 @@ export default function Accept({
             <ActionButton
               label="Aceptar"
               color="bg-green-600"
-              disablied={isLoading}
+              // disablied={isLoading}
               onClick={() => {
                 if (petitionConfig && onClick) {
                   onClick(petitionConfig);
@@ -51,7 +49,7 @@ export default function Accept({
               onClick={() => {
                 switchModal();
               }}
-              disablied={isLoading}
+              // disablied={isLoading}
             />
           </div>
           <div className="flex justify-center pt-4">

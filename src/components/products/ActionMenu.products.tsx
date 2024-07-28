@@ -1,18 +1,17 @@
 import { useStore } from "../../store/store";
-import { useFetch } from "../../hooks/common/useFetch";
 import { FetchData } from "../../interfaces/common/fetch.interface";
 import { modalStore } from "../../store/store";
 import ActionButton from "../common/buttons/ActionButton";
 import Accept from "../common/modal/Accept.modal";
 import { useState } from "react";
+import { useFetch } from "../../hooks/common/useFetch";
 export default function ActionMenu() {
-  const {petition, isLoading} = useFetch()
   const {pagination, reset} = useStore()
+  const {petition, isLoading} = useFetch()
   const {modal, switchModal} = modalStore()
   const [message, setMessage] = useState('')
   const [petitionConfig, setPetitionConfig] = useState<FetchData>({
     url: '',
-    body: '',
     method: ''
   })
   const [isForm, setisForm] = useState(false)
@@ -21,13 +20,10 @@ export default function ActionMenu() {
       <Accept 
         message={message}
         active={modal}
-        
-        createForm={isForm}
         isLoading={isLoading}
+        createForm={isForm}
         petitionConfig={petitionConfig}
-        onClick={()=>{
-          petition(petitionConfig)
-        }}
+        onClick={petition}
       />
       <ActionButton
         label="Borrar todo"
@@ -62,10 +58,6 @@ export default function ActionMenu() {
         color="bg-green-300"
         onClick={()=>{
           setisForm(true)
-          setPetitionConfig({
-            url: `https://lexart-test-back.vercel.app/v1/products/create/one?limit=5&offset=${pagination}`,
-            method: 'post'
-          })
           switchModal(); 
           setMessage('Ingresa los datos del producto para ingresarlo')
         }}

@@ -11,6 +11,8 @@ export function useFetch() {
     async function petition({ url, method, body }: FetchData) {
       setIsloading(true);
       try {
+        console.log(body, url, method);
+        
         const result = await fetch(`${url}`,{
           credentials: 'include',
           headers: {
