@@ -11,6 +11,9 @@ export function useFetch() {
       try {
         const result = await fetch(`${url}`,{
           credentials: 'include',
+          headers: {
+            'Content-Type': 'application/json'
+          },
           body: JSON.stringify(body),
           method: method
         });
