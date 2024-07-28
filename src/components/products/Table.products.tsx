@@ -4,7 +4,7 @@ import { useStore } from "../../store/store";
 import { ReturnedData } from "../../types/common/common.type";
 import Button from "../common/buttons/Button";
 export default function Table() {
-  const [returnedData, isLoading, petition] = useFetch();
+  const {returnedData, petition} = useFetch();
   const { pagination, inc, dec } = useStore();
   useEffect(() => {
     petition({

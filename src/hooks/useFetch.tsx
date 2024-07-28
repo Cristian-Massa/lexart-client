@@ -26,5 +26,5 @@ export function useFetch() {
       }
     }
   
-    return [returnedData, isLoading, petition, error] as const;
+    return {returnedData, isLoading, petition, error} as const;
   }

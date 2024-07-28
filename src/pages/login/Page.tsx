@@ -11,7 +11,7 @@ export default function Login(){
     email: '',
     password: ''
   })
-  const [returnedData, isLoading, petition] = useFetch()
+  const {isLoading, petition} = useFetch()
   console.log(document.cookie);
   
     return(
@@ -71,7 +71,6 @@ export default function Login(){
               <Button label="Iniciar Seción" disablied={true} onClick={()=>{}}/>:
               <Button label="Iniciar Seción" onClick={(e) => {
                 e.preventDefault()
-                const currentTarget = e.currentTarget
                 if(data.email && data.password){
                   petition({
                     url: "https://lexart-test-back.vercel.app/v1/users/login",

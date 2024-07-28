@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Button from "../../components/common/buttons/Button";
 import Input from "../../components/common/inputs/Input";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { UserInfo } from "../../interfaces/user/user.interface";
 import { useFetch } from "../../hooks/useFetch";
 import Aside from "../../components/common/aside/Aside";
@@ -13,7 +13,7 @@ export default function Register() {
     email: '',
     password: ''
   })
-  const [returnedData, isLoading, petition] = useFetch()
+  const {isLoading, petition} = useFetch()
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-muted px-4 py-12 sm:px-6 lg:px-8">
@@ -124,7 +124,6 @@ export default function Register() {
               <Button label="Registrarse" disablied={true} onClick={()=>{}}/>:
               <Button label="Registrarse" onClick={(e) => {
                 e.preventDefault()
-                const currentTarget = e.currentTarget
                 if(data.email && data.firstName && data.lastName && data.password){
                   petition({
                     url: "https://lexart-test-back.vercel.app/v1/users/register",
