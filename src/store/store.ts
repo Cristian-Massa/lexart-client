@@ -1,6 +1,4 @@
 import { create } from 'zustand'
-import { ProductInfo } from '../interfaces/product/product.interface'
-
 type Store = {
   pagination: number
   inc: () => void
