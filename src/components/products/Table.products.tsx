@@ -90,6 +90,12 @@ export default function Table() {
             pagination > 0 ? dec() : null;
           }}
         />
+        <p className=" p-2 bg-gray-100 rounded-lg">{
+          'products' in returnedData ?
+            returnedData.offset  
+          :
+            null
+          }</p>
         <Button
           label=">"
           onClick={() => {
