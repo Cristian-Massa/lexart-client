@@ -101,8 +101,9 @@ export default function Table() {
           onClick={() => {
             if('products' in returnedData){
               returnedData.offset <= returnedData.total / 6 ? 
-              null:
-              inc();
+              inc():
+              null
+              
             }
           }}
         />
