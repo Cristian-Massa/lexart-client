@@ -10,6 +10,7 @@ export type Store = {
   pagination: number;
   inc: () => void;
   dec: () => void;
+  reset: ()=> void;
 };
 
 export type ModalStore = {

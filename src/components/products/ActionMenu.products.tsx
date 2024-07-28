@@ -7,7 +7,7 @@ import Accept from "../common/modal/Accept.modal";
 import { useState } from "react";
 export default function ActionMenu() {
   const {petition, isLoading} = useFetch()
-  const {pagination} = useStore()
+  const {pagination, reset} = useStore()
   const {modal, switchModal} = modalStore()
   const [message, setMessage] = useState('')
   const [petitionConfig, setPetitionConfig] = useState<FetchData>({
@@ -35,6 +35,7 @@ export default function ActionMenu() {
             url: `https://lexart-test-back.vercel.app/v1/products/delete/all?limit=5&offset=${pagination}`,
             method: 'delete'
           })
+          reset()
           switchModal(); 
           setMessage('Seguro que quieres borrar todo?')
         }}

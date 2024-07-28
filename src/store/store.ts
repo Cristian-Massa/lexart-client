@@ -5,6 +5,7 @@ export const useStore = create<Store>()((set) => ({
   pagination: 0,
   inc: () => set((state) => ({ pagination: state.pagination + 5 })),
   dec: () => set((state) => ({ pagination: state.pagination - 5 })),
+  reset: () => set(() => ({ pagination: 0 })),
 }))
 
 
