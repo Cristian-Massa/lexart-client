@@ -64,7 +64,7 @@ export default function Table() {
                       <td className="p-4 align-middle [&:has([role=checkbox])]:pr-0">
                         ${"price" in element ? element.price : null}
                       </td>
-                      <td className="p-4 align-middle [&:has([role=checkbox])]:pr-0">
+                      <td className="p-4 flex gap-4 align-middle [&:has([role=checkbox])]:pr-0">
                         <ActionButton
                           label="borrar"
                           color="bg-red-600"
