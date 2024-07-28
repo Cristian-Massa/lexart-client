@@ -134,7 +134,8 @@ export default function ModifyForm({
         <ActionButton
           label="Guardar"
           color="bg-yellow-500"
-          onClick={() => {
+          onClick={(e) => {
+            e.preventDefault()
             petition({
               url: `https://lexart-test-back.vercel.app/v1/products/modify/one?id=${id}`,
               body: data,
