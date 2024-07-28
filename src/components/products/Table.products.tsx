@@ -87,12 +87,12 @@ export default function Table() {
         <Button
           label="<"
           onClick={() => {
-            pagination >= 1 ? dec() : null;
+            pagination >= 5 ? dec() : null;
           }}
         />
         <p className=" p-2 bg-gray-100 rounded-lg">{
           'products' in returnedData ?
-            returnedData.offset / 6 
+            returnedData.offset / 5
           :
             null
           }</p>
@@ -102,7 +102,7 @@ export default function Table() {
             if('products' in returnedData){
               console.log(returnedData.offset, returnedData.total, returnedData.total / 6);
               
-              returnedData.offset <= returnedData.total / 6 ? 
+              returnedData.offset * 5 == returnedData.total / 5 ? 
               inc():
               null
               

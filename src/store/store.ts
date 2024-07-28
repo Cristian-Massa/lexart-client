@@ -7,8 +7,8 @@ type Store = {
 
 export const useStore = create<Store>()((set) => ({
   pagination: 0,
-  inc: () => set((state) => ({ pagination: state.pagination + 1 })),
-  dec: () => set((state) => ({ pagination: state.pagination - 1 })),
+  inc: () => set((state) => ({ pagination: state.pagination + 5 })),
+  dec: () => set((state) => ({ pagination: state.pagination - 5 })),
 }))
 
 type ConsoleStore = {
