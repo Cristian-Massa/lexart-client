@@ -102,7 +102,7 @@ export default function Table() {
             if('products' in returnedData){
               console.log(returnedData.offset, returnedData.total, returnedData.total / 6);
               
-              returnedData.offset * 5 == returnedData.total / 5 ? 
+              returnedData.offset * 5 >= returnedData.total / 5 ? 
               null:
               inc()
               
