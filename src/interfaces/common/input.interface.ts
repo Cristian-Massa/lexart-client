@@ -7,4 +7,5 @@ export interface Input{
     name?: string
     required?: boolean
     type?: string
+    defaultValue?: string
 }

@@ -18,7 +18,7 @@ export default function Table() {
   }, [pagination]);
   return (
     <>
-      <table className="w-full caption-bottom text-sm">
+      <table className="w-full  caption-bottom text-sm">
         <thead className="[&_tr]:border-b">
           <tr className="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
             <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0">
@@ -44,7 +44,7 @@ export default function Table() {
             </th>
           </tr>
         </thead>
-        <tbody className="[&_tr:last-child]:border-0">
+        <tbody className="[&_tr:last-child]:border-0 h-[400px]">
           {productResponse && Array.isArray(productResponse?.products)
             ? productResponse.products.map(
                 (element: ProductInfo, key: number) => {
