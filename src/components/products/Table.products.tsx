@@ -66,24 +66,27 @@ export default function Table() {
                       </td>
                       <td className="p-4 flex gap-4 align-middle [&:has([role=checkbox])]:pr-0">
                         <ActionButton
+
                           label="borrar"
                           color="bg-red-600"
-                          onClick={(e) => {
-                            const id = e.currentTarget.id
-                            console.log(id);
-                            
+                          onClick={() => {
+                            "id" in element ? 
                             petition({
-                              url: `https://lexart-test-back.vercel.app/v1/products/delete/one?limit=5&offset=${pagination}&id=${id}`,
+                              url: `https://lexart-test-back.vercel.app/v1/products/delete/one?limit=5&offset=${pagination}&id=${element.id}`,
                               method: "delete"
                             })
+                            :
+                            null
                           }}
                         />
                         <ActionButton
                           label="editar"
                           color="bg-yellow-600"
-                          onClick={(e) => {
-                            const id = e.currentTarget.id
-                            redirect(`/products/${id}`)
+                          onClick={() => {
+                            "id" in element ? 
+                            redirect(`/products/${element.id}`)
+                            :
+                            null
                           }}
                         />
                       </td>
