@@ -87,7 +87,7 @@ export default function Table() {
         <Button
           label="<"
           onClick={() => {
-            pagination >= 6 ? dec() : null;
+            pagination >= 1 ? dec() : null;
           }}
         />
         <p className=" p-2 bg-gray-100 rounded-lg">{
