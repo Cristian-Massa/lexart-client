@@ -92,7 +92,7 @@ export default function Table() {
         />
         <p className=" p-2 bg-gray-100 rounded-lg">{
           'products' in returnedData ?
-            returnedData.offset  
+            returnedData.offset / 6 
           :
             null
           }</p>
@@ -100,9 +100,9 @@ export default function Table() {
           label=">"
           onClick={() => {
             if('products' in returnedData){
-              returnedData.products.length === 0 ? 
+              returnedData.offset > returnedData.total / 6 ? 
               dec():
-              inc();
+              null
             }
           }}
         />
