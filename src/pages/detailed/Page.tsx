@@ -64,7 +64,7 @@ export default function Detailed() {
                 </div>
               ) : "id" in returnedData ? (
                 <ModifyForm
-                  id={Number(id)}
+                  id={returnedData.id}
                   name={returnedData.name}
                   stock={returnedData.stock}
                   price={returnedData.price}
