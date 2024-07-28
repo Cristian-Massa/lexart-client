@@ -99,7 +99,11 @@ export default function Table() {
         <Button
           label=">"
           onClick={() => {
-            inc();
+            if('products' in returnedData){
+              returnedData.products.length === 0 ? 
+              dec():
+              inc();
+            }
           }}
         />
       </div>
