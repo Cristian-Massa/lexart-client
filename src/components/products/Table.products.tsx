@@ -70,6 +70,8 @@ export default function Table() {
                           color="bg-red-600"
                           onClick={(e) => {
                             const id = e.currentTarget.id
+                            console.log(id);
+                            
                             petition({
                               url: `https://lexart-test-back.vercel.app/v1/products/delete/one?limit=5&offset=${pagination}&id=${id}`,
                               method: "delete"
