@@ -1,11 +1,12 @@
 import { useEffect } from "react";
-import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useFetch } from "../../hooks/common/useFetch";
 import { productStore, useStore } from "../../store/store";
 import Button from "../common/buttons/Button";
 import ActionButton from "../common/buttons/ActionButton";
 import { ProductInfo } from "../../interfaces/product/product.interface";
 export default function Table() {
+  const navigate = useNavigate()
   const { petition } = useFetch();
   const { productResponse } = productStore();
   const { pagination, inc, dec } = useStore();
@@ -88,7 +89,7 @@ export default function Table() {
                           color="bg-yellow-600"
                           onClick={() => {
                             "id" in element
-                              ? redirect(`/products/${element.id}`)
+                              ? navigate(`/products/${element.id}`)
                               : null;
                           }}
                         />
