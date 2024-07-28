@@ -150,7 +150,7 @@ export default function CreateForm() {
                 disablied={isLoading}
                 onClick={() => {
                     petition({
-                      url: `https://lexart-test-back.vercel.app/v1/products/delete/all?limit=5&offset=${pagination}`,
+                      url: `https://lexart-test-back.vercel.app/v1/products/create/one?limit=5&offset=${pagination}`,
                       body: {
                         name: body.name,
                         mark: body.mark,
