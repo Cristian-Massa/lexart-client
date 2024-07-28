@@ -100,7 +100,7 @@ export default function Table() {
           label=">"
           onClick={() => {
             if('products' in returnedData){
-              returnedData.offset > returnedData.total / 6 ? 
+              returnedData.offset === returnedData.total / 6 ? 
               dec():
               null
             }
