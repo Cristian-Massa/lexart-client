@@ -20,6 +20,9 @@ export default function Table() {
       <table className="w-full caption-bottom text-sm">
         <thead className="[&_tr]:border-b">
           <tr className="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
+          <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0">
+              Id
+            </th>
             <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0">
               Nombre
             </th>
@@ -49,6 +52,9 @@ export default function Table() {
                       key={key++}
                       className="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted"
                     >
+                                            <td className="p-4 align-middle [&:has([role=checkbox])]:pr-0 font-medium">
+                        {"id" in element ? element.id : null}
+                      </td>
                       <td className="p-4 align-middle [&:has([role=checkbox])]:pr-0 font-medium">
                         {"name" in element ? element.name : null}
                       </td>
@@ -83,7 +89,7 @@ export default function Table() {
                           label="editar"
                           color="bg-yellow-600"
                           onClick={() => {
-                            "id" in element ? 
+                            "id" in element ?
                             redirect(`/products/${element.id}`)
                             :
                             null
