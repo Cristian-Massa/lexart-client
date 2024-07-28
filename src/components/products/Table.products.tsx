@@ -67,12 +67,12 @@ export default function Table() {
                       <td className="p-4 align-middle [&:has([role=checkbox])]:pr-0">
                         <ActionButton
                           label="borrar"
-                          color="bg-red-900"
+                          color="bg-red-600"
                           onClick={() => {}}
                         />
                         <ActionButton
                           label="editar"
-                          color="bg-yellow-900"
+                          color="bg-yellow-600"
                           onClick={() => {}}
                         />
                       </td>
