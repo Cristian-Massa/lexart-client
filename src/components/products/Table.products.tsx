@@ -43,7 +43,7 @@ export default function Table() {
           {
 
           Array.isArray(productResponse)
-            ? productResponse.map(
+            ? productResponse.products.map(
                 (element: ReturnedData, key: number) => {
                   return (
                     <tr

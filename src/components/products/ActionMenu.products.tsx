@@ -57,7 +57,7 @@ export default function ActionMenu() {
         onClick={()=>{
           setPetitionConfig({
             url: `https://lexart-test-back.vercel.app/v1/products/delete/all?limit=5&offset=${pagination}`,
-            method: 'delete'
+            method: 'post'
           })
           switchModal(); 
           setMessage('Seguro que quieres borrar todo?')
