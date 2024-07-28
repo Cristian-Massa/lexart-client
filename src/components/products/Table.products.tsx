@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { useFetch } from "../../hooks/common/useFetch";
 import { productStore, useStore } from "../../store/store";
-import { ReturnedData } from "../../types/common/common.type";
 import Button from "../common/buttons/Button";
 import ActionButton from "../common/buttons/ActionButton";
+import { ProductInfo } from "../../interfaces/product/product.interface";
 export default function Table() {
-  const { returnedData, petition } = useFetch();
-  const { productResponse} = productStore()
+  const { petition } = useFetch();
+  const { productResponse } = productStore();
   const { pagination, inc, dec } = useStore();
   useEffect(() => {
     petition({
@@ -40,11 +40,9 @@ export default function Table() {
           </tr>
         </thead>
         <tbody className="[&_tr:last-child]:border-0">
-          {
-
-          Array.isArray(productResponse?.products)
+          {productResponse && Array.isArray(productResponse?.products)
             ? productResponse.products.map(
-                (element: ReturnedData, key: number) => {
+                (element: ProductInfo, key: number) => {
                   return (
                     <tr
                       key={key++}
@@ -91,20 +89,18 @@ export default function Table() {
             pagination >= 5 ? dec() : null;
           }}
         />
-        <p className=" p-2 bg-gray-100 rounded-lg">{
-          'products' in returnedData ?
-            returnedData.offset / 5
-          :
-            null
-          }</p>
+        <p className=" p-2 bg-gray-100 rounded-lg">
+          {productResponse && "products" in productResponse
+            ? productResponse.offset / 5
+            : null}
+        </p>
         <Button
           label=">"
           onClick={() => {
-            if('products' in returnedData){
-              returnedData.offset <= returnedData.total - 5 ? 
-              inc():
-              null
-              
+            if (productResponse && "products" in productResponse) {
+              productResponse.offset <= productResponse.total - 5
+                ? inc()
+                : null;
             }
           }}
         />
