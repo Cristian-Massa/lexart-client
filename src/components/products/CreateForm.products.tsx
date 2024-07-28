@@ -160,6 +160,7 @@ export default function CreateForm() {
                       },
                       method: 'post',
                     });
+                    switchModal()
                 }}
               />
               <ActionButton
