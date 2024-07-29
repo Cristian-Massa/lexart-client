@@ -13,12 +13,7 @@ const navigate = useNavigate();
     email: '',
     password: ''
   })
-  const {returnedData, isLoading, petition} = useFetch()
-  useEffect(()=>{
-if("message" in returnedData && returnedData. message === "login exitoso"){
-navigate('/products')
-}
-},[returnedData])
+  const { isLoading, petition } = useFetch()
     return(
         <div className="flex min-h-screen items-center justify-center bg-muted px-4 py-12 sm:px-6 lg:px-8">
           <Aside />
