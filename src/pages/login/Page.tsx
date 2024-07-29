@@ -82,6 +82,7 @@ export default function Login(){
 {
 "message" in returnedData ?
 <p>{returnedData.message}</p> 
+:
 null
 }
           </div>
