@@ -2,17 +2,23 @@ import { Link } from "react-router-dom"
 import Button from "../../components/common/buttons/Button"
 import Input from "../../components/common/inputs/Input"
 import { UserInfo } from "../../interfaces/user/user.interface"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import {useNavigate} from 'react-router-dom'
 import { useFetch } from "../../hooks/common/useFetch"
 import Aside from "../../components/common/aside/Aside"
 
 export default function Login(){
+const navigate = useNavigate();
   const [data, setData] = useState<UserInfo>({
     email: '',
     password: ''
   })
   const {returnedData, isLoading, petition} = useFetch()
-  
+  useEffect(()={
+if("message" in returnedData && returnedData. message === "login exitoso"){
+navigate('/products')
+}
+},[returnedData])
     return(
         <div className="flex min-h-screen items-center justify-center bg-muted px-4 py-12 sm:px-6 lg:px-8">
           <Aside />
@@ -76,15 +82,10 @@ export default function Login(){
                     method: "post",
                     body: { "email": data.email, "password": data.password }
                   })
+
                 }
               }} />
             }
-{
-"message" in returnedData ?
-<p>{returnedData.message}</p> 
-:
-null
-}
           </div>
           <div>
             <Link
