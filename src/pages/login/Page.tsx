@@ -14,7 +14,7 @@ const navigate = useNavigate();
     password: ''
   })
   const {returnedData, isLoading, petition} = useFetch()
-  useEffect(()={
+  useEffect(()=>{
 if("message" in returnedData && returnedData. message === "login exitoso"){
 navigate('/products')
 }
