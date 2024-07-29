@@ -11,7 +11,7 @@ export default function Login(){
     email: '',
     password: ''
   })
-  const {isLoading, petition} = useFetch()
+  const {returnedData, isLoading, petition} = useFetch()
   
     return(
         <div className="flex min-h-screen items-center justify-center bg-muted px-4 py-12 sm:px-6 lg:px-8">
@@ -79,6 +79,13 @@ export default function Login(){
                 }
               }} />
             }
+{
+"message" in returnedData ?
+<p>{returnedData}</p> :
+"error" in returnedData?
+<p>{returnedData}</p>:
+null
+}
           </div>
           <div>
             <Link
