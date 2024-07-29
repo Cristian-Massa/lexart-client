@@ -81,9 +81,7 @@ export default function Login(){
             }
 {
 "message" in returnedData ?
-<p>{returnedData.message}</p> :
-"error" in returnedData?
-<p>{returnedData.error}</p>:
+<p>{returnedData.message}</p> 
 null
 }
           </div>
