@@ -7,7 +7,6 @@ import { useFetch } from "../../hooks/common/useFetch"
 import Aside from "../../components/common/aside/Aside"
 
 export default function Login(){
-const navigate = useNavigate();
   const [data, setData] = useState<UserInfo>({
     email: '',
     password: ''

@@ -3,7 +3,6 @@ export interface UserInfo{
     password?: string,
     firstName?: string,
     lastName?: string,
-    password?: string
 }
 
 
