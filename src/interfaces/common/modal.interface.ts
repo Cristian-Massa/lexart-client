@@ -1,10 +1,10 @@
 import { FetchData } from "./fetch.interface";
 
-export interface ModalInterface{
+export interface ModalInterface<T>{
     active?: boolean,
     createForm?: boolean,
-    petitionConfig?: FetchData,
+    petitionConfig?: FetchData<T>,
     message?: string,
     isLoading?: boolean,
-    onClick?: (petitionConfig: FetchData)=>void
+    onClick?: (petitionConfig: FetchData<T>)=>void
 }
