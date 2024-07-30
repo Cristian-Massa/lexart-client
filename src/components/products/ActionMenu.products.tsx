@@ -7,10 +7,10 @@ import { useState } from "react";
 import { useFetch } from "../../hooks/common/useFetch";
 export default function ActionMenu() {
   const {pagination, reset} = useStore()
-  const {petition, isLoading} = useFetch()
+  const {petition, loading} = useFetch()
   const {modal, switchModal} = modalStore()
   const [message, setMessage] = useState('')
-  const [petitionConfig, setPetitionConfig] = useState<FetchData>({
+  const [petitionConfig, setPetitionConfig] = useState<FetchData<undefined>>({
     url: '',
     method: ''
   })
@@ -20,7 +20,7 @@ export default function ActionMenu() {
       <Accept 
         message={message}
         active={modal}
-        isLoading={isLoading}
+        isLoading={loading}
         createForm={isForm}
         petitionConfig={petitionConfig}
         onClick={petition}
