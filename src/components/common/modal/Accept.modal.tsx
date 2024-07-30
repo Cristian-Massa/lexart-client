@@ -9,7 +9,7 @@ export default function Accept({
   petitionConfig,
   createForm,
   onClick
-}: ModalInterface) {
+}: ModalInterface<undefined>) {
   const { switchModal } = modalStore();
   return (
     <div
