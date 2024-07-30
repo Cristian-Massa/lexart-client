@@ -4,11 +4,12 @@ import ActionButton from "../common/buttons/ActionButton";
 import Input from "../common/inputs/Input";
 import { useFetch } from "../../hooks/common/useFetch";
 import { useStore } from "../../store/store";
+import { ProductInfo } from "../../interfaces/product/product.interface";
 
 export default function CreateForm() {
     const {pagination} = useStore()
-    const {petition, isLoading} = useFetch()
-  const [body, setBody] = useState({
+    const {petition, loading} = useFetch()
+  const [body, setBody] = useState<ProductInfo>({
     name: "",
     mark: "",
     stock: 0,
@@ -147,17 +148,11 @@ export default function CreateForm() {
                     <ActionButton
                 label="Aceptar"
                 color="bg-green-600"
-                disablied={isLoading}
+                disablied={loading}
                 onClick={() => {
                     petition({
-                      url: `https://lexart-test-back.vercel.app/v1/products/create/one?limit=5&offset=${pagination}`,
-                      body: {
-                        name: body.name,
-                        mark: body.mark,
-                        stock: body.stock,
-                        model: body.model,
-                        price: body.price
-                      },
+                      url: `${import.meta.env.VITE_URL_BACKEND}/v1/products/create/one?limit=5&offset=${pagination}`,
+                      body: body,
                       method: 'post',
                     });
                     switchModal()
@@ -169,7 +164,7 @@ export default function CreateForm() {
                 onClick={() => {
                   switchModal();
                 }}
-                disablied={isLoading}
+                disablied={loading}
               /> 
                 </div>
                 :

@@ -1,5 +1,5 @@
-export interface FetchData{
+export interface FetchData<T>{
     url: string,
-    body?: any,
+    body?: T,
     method: 'get' | 'post' | 'put' | 'delete' | '';
 }

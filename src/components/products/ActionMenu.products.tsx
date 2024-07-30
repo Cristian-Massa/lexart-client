@@ -32,7 +32,7 @@ export default function ActionMenu() {
         onClick={()=>{
           setisForm(false)
           setPetitionConfig({
-            url: `https://lexart-test-back.vercel.app/v1/products/delete/all?limit=5&offset=${pagination}`,
+            url: `${import.meta.env.VITE_URL_BACKEND}/v1/products/delete/all?limit=5&offset=${pagination}`,
             method: 'delete'
           })
           reset()
@@ -46,7 +46,7 @@ export default function ActionMenu() {
         onClick={()=>{
           setisForm(false)
           setPetitionConfig({
-            url: `https://lexart-test-back.vercel.app/v1/products/create/seed?limit=5&offset=${pagination}`,
+            url: `${import.meta.env.VITE_URL_BACKEND}/v1/products/create/seed?limit=5&offset=${pagination}`,
             method: 'post'
           })
           switchModal(); 
@@ -68,6 +68,6 @@ export default function ActionMenu() {
 
 
 // petition({
-//   url: "https://lexart-test-back.vercel.app/v1/products/delete/all",
+//   url: "${import.meta.env.VITE_URL_BACKEND}/v1/products/delete/all",
 //   method: "delete",
 // });

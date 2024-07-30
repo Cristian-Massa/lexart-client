@@ -4,3 +4,8 @@ export interface UserInfo{
     lastName?: string,
     password?: string
 }
+
+
+export interface UserResponse{
+    message: string
+}

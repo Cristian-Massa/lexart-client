@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Button from "../../components/common/buttons/Button";
 import Input from "../../components/common/inputs/Input";
 import { useState } from "react";
-import { UserInfo } from "../../interfaces/user/user.interface";
+import { UserInfo, UserResponse } from "../../interfaces/user/user.interface";
 import { useFetch } from "../../hooks/common/useFetch";
 import Aside from "../../components/common/aside/Aside";
 
@@ -13,7 +13,7 @@ export default function Register() {
     email: '',
     password: ''
   })
-  const {isLoading, petition} = useFetch()
+  const {returnedData, loading, petition} = useFetch<UserResponse, UserInfo>()
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-muted px-4 py-12 sm:px-6 lg:px-8">
@@ -120,18 +120,24 @@ export default function Register() {
           </div>
           <div>
             {
-              isLoading ? 
+              loading ? 
               <Button label="Registrarse" disablied={true} onClick={()=>{}}/>:
               <Button label="Registrarse" onClick={(e) => {
                 e.preventDefault()
                 if(data.email && data.firstName && data.lastName && data.password){
                   petition({
-                    url: "https://lexart-test-back.vercel.app/v1/users/register",
+                    url: `${import.meta.env.VITE_URL_BACKEND}/v1/users/register`,
                     method: "post",
-                    body: { "email": data.email, "firstName": data.firstName, "lastName": data.lastName, "password": data.password }
+                    body: data
                   })
                 }
               }} />
+            }
+            {
+              returnedData ?
+                <p className="text-center py-2">{returnedData.message}</p>
+                :
+                null
             }
           </div>
           <div>

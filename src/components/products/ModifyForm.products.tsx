@@ -24,7 +24,7 @@ export default function ModifyForm({
   });
 
   return (
-    <form className="grid gap-6">
+    <form className="grid h-[500px] gap-6">
       <div className="grid gap-3">
         <label
           className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -138,7 +138,7 @@ export default function ModifyForm({
           onClick={(e) => {
             e.preventDefault()
             petition({
-              url: `https://lexart-test-back.vercel.app/v1/products/put/one?id=${id}`,
+              url: `${import.meta.env.VITE_URL_BACKEND}/v1/products/put/one?id=${id}`,
               body: data,
               method: 'put',
             });

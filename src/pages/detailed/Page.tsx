@@ -3,13 +3,14 @@ import ModifyForm from "../../components/products/ModifyForm.products";
 import { useParams } from "react-router-dom";
 import { useFetch } from "../../hooks/common/useFetch";
 import { useEffect } from "react";
+import { ProductInfo } from "../../interfaces/product/product.interface";
 export default function Detailed() {
-  const { returnedData, isLoading, petition } = useFetch();
+  const { returnedData, loading, petition } = useFetch<ProductInfo, undefined>();
   const { id } = useParams();
 
   useEffect(() => {
     petition({
-      url: `https://lexart-test-back.vercel.app/v1/products/get/one?id=${id}`,
+      url: `${import.meta.env.VITE_URL_BACKEND}/v1/products/get/one?id=${id}`,
       method: "get",
     });
   }, []);
@@ -31,8 +32,8 @@ export default function Detailed() {
               </p>
             </div>
             <div className="p-6">
-              {isLoading ? (
-                <div className="flex justify-center items-center">
+              {loading ? (
+                <div className="flex  h-[500px] justify-center items-center">
                 <svg
                   className="animate-spin "
                   width="64px"
@@ -62,7 +63,7 @@ export default function Detailed() {
                   </g>
                 </svg>
                 </div>
-              ) : "id" in returnedData ? (
+              ) : returnedData ? (
                 <ModifyForm
                   id={returnedData.id}
                   name={returnedData.name}

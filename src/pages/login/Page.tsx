@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import Button from "../../components/common/buttons/Button"
 import Input from "../../components/common/inputs/Input"
-import { UserInfo } from "../../interfaces/user/user.interface"
+import { UserInfo, UserResponse } from "../../interfaces/user/user.interface"
 import { useState } from "react"
 import { useFetch } from "../../hooks/common/useFetch"
 import Aside from "../../components/common/aside/Aside"
@@ -11,7 +11,7 @@ export default function Login(){
     email: '',
     password: ''
   })
-  const {isLoading, petition} = useFetch()
+  const {returnedData, loading, petition} = useFetch<UserResponse, UserInfo>()
   
     return(
         <div className="flex min-h-screen items-center justify-center bg-muted px-4 py-12 sm:px-6 lg:px-8">
@@ -66,18 +66,24 @@ export default function Login(){
           </div>
           <div>
           {
-              isLoading ? 
+              loading ? 
               <Button label="Iniciar Seción" disablied={true} onClick={()=>{}}/>:
               <Button label="Iniciar Seción" onClick={(e) => {
                 e.preventDefault()
                 if(data.email && data.password){
                   petition({
-                    url: "https://lexart-test-back.vercel.app/v1/users/login",
+                    url: `${import.meta.env.VITE_URL_BACKEND}/v1/users/login`,
                     method: "post",
                     body: { "email": data.email, "password": data.password }
                   })
                 }
               }} />
+            }
+                        {
+              returnedData ?
+                <p className="text-center py-2">{returnedData.message}</p>
+                :
+                null
             }
           </div>
           <div>
